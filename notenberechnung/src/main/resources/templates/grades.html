@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notenübersicht</title>
+</head>
+<body>
+    <h1>Notenübersicht</h1>
+    <form action="/add" method="post">
+        Fach: <input type="text" name="subject" required>
+        Note: <input type="number" name="grade" step="0.01" required>
+        <button type="submit">Hinzufügen</button>
+    </form>
+
+    <h2>Notenliste</h2>
+    <ul>
+        <li th:each="grade : ${grades}">
+            Fach: <span th:text="${grade.subject}"></span>, Note: <span th:text="${grade.grade}"></span>
+        </li>
+    </ul>
+
+    <a href="/average">Durchschnitt berechnen</a>
+</body>
+</html>
